@@ -4,6 +4,11 @@ import pandas as pd
 # numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
 # NUMER_LIST_DF = list_df.select_dtypes(include=numerics)
 
+
+def time_slice(df, beginning, end):
+    return df[(df.index >= beginning) & (df.index <= end)]
+
+
 def format_dollar_field(field: pd.Series):
     """
     Convert given dollar field into a float
