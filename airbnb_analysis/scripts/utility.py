@@ -6,6 +6,13 @@ import pandas as pd
 
 
 def time_slice(df, beginning, end):
+    """
+    Return time slice based on given start and end times
+    Input:
+        df: dataframe, beginning: start time, end: end time
+    Output:
+        Pandas dataframe trimmed to specified time interval
+    """
     return df[(df.index >= beginning) & (df.index <= end)]
 
 
@@ -27,7 +34,7 @@ def format_dollar_field(field: pd.Series):
     ).fillna(0.0)
 
 
-def create_ordered_months(cal_df: pd.DataFrame) -> pd.Series:
+def create_ordered_months(cal_df: pd.DataFrame):
     """
     Convert numerical months into an ordered Series of month names
     Input:
