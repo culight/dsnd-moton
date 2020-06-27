@@ -1,1 +1,9 @@
+# files
 __pycache__
+
+# folders
+data/*
+
+# file types
+*.csv
+*.json
