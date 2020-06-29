@@ -1,4 +1,4 @@
-# airbnb_analysis
+# Seattle Airbnb Analysis
 
 ## Dependencies
 This project uses the following libraries (along with their dependencies):
@@ -37,5 +37,4 @@ In this analysis, we would like to see how certain events might have influenced 
   (e.g. _jupyter notebook impact_airbnb.ipynb_)
 
 ## Authors
-Demerrick Moton
-dmoton3.14@gmail.com
+Demerrick Moton - dmoton3.14@gmail.com
