@@ -2,7 +2,10 @@
 __pycache__
 
 # folders
-data/*
+data/raw/*
+data/source/*
+data/intermediate/*
+
 
 # file types
 *.csv
