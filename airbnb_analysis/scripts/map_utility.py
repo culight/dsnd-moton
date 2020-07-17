@@ -1,5 +1,6 @@
-from pathlib import Path
-import plotly_express as px
+import plotly.graph_objs as go
+
+from .creds import plotly_token
 
 
 def create_map_dropdown(data: dict):
@@ -10,14 +11,16 @@ def create_map_dropdown(data: dict):
     Output:
         plotly map incorporating input data
     """
-    event_list = list(data.keys())
-    event_data = list(data.values())
 
     # add the figures
-    fig = event_data[0]
-    fig.add_trace(event_data[1].data[0])
-    fig.add_trace(event_data[2].data[0])
-    fig.add_trace(event_data[3].data[0])
+    event_list = list(data.keys())
+    event_data = [plot for plot in data.values()]
+    fig = go.Figure()
+    fig.add_trace(event_data[0].data[0])
+    for plot in event_data[1:]:
+        plot.data[0].visible = False
+        fig.add_trace(plot.data[0])
+        fig.layout = plot.layout
         
     # setup layout
     fig.update_layout(
@@ -25,9 +28,14 @@ def create_map_dropdown(data: dict):
         height=800,
         mapbox = dict(
             center= dict(lat=47.6, lon= -122.3),
-            accesstoken="pk.eyJ1IjoiZG1vdG9uMzE0IiwiYSI6ImNrYjVpdjhqbTBzaW4yenBpaHBlM3U3YmUifQ.DV5PwTAD_ZYi0qO1Nu105A",
+            accesstoken=plotly_token,
             zoom=10
-        )
+        ),
+        title={
+            'yanchor': 'top',
+            'xanchor': 'center',
+            'x': 0.5
+        }
     )
 
     # Add dropdown
@@ -37,6 +45,8 @@ def create_map_dropdown(data: dict):
                 x=-0.05,
                 y=1,
                 yanchor='top',
+                xanchor='right',
+                # pad={"r": 10, "t": 10},
                 buttons=list([
                     dict(
                         args=['visible', [True, False, False, False]],
@@ -66,8 +76,14 @@ def create_map_dropdown(data: dict):
     # add annotation
     fig.update_layout(
         annotations=[
-            dict(text="Neighborhood:", showarrow=False,
-            x=-0.28, y=1.04, yref="paper", align="left")
+            dict(
+                text="Neighborhood:",
+                showarrow=False,
+                x=-0.28,
+                y=1.04,
+                yref="paper",
+                align="left"
+            )
         ]
     )
 
