@@ -35,6 +35,12 @@ In this analysis, we would like to see how certain events might have influenced 
 - Clone (or download) the Repo
 - Use Jupyter Notebook to open the EDA files of interest
   (e.g. _jupyter notebook impact_airbnb.ipynb_)
+- You'll need a mapbox token to run the map portion of this project. The token is used in map_utility.py, here:
+  > mapbox = dict(
+            center= dict(lat=47.6, lon= -122.3),
+            accesstoken=mapbox_token,
+            zoom=10
+        )
 
 ## Authors
 Demerrick Moton - dmoton3.14@gmail.com

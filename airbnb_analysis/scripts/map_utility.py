@@ -1,6 +1,6 @@
 import plotly.graph_objs as go
 
-from .creds import plotly_token
+from .creds import mapbox_token
 
 
 def create_map_dropdown(data: dict):
@@ -28,7 +28,7 @@ def create_map_dropdown(data: dict):
         height=800,
         mapbox = dict(
             center= dict(lat=47.6, lon= -122.3),
-            accesstoken=plotly_token,
+            accesstoken=mapbox_token,
             zoom=10
         ),
         title={
